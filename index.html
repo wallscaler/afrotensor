@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>Cathedral</title>
-<meta name="description" content="A product-centric AI lab on Bittensor subnet 49. Polaris Compute, Rubric, Vox, and Big Africa.">
+<meta name="description" content="Cathedral is a product-centric lab. Useful products first. Proven workloads graduate to the Cathedral network on Bittensor subnet 39.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300&display=swap" rel="stylesheet">
 <style>
 :root {
   color-scheme: dark;
-  --paper: #12100e;
-  --paper-deep: #1a1714;
+  --paper: #0c0a08;
+  --paper-deep: #14110e;
   --card: #1e1b17;
   --ink: #f2efe6;
   --ink-2: #b8b2a6;
@@ -21,7 +21,8 @@
   --line: #2c2822;
   --line-strong: #4a443a;
   --flame: #e04a1a;
-  --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --flame-wash: #3a1c12;
+  --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --mono: "SFMono-Regular", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
   --gut: clamp(20px, 5vw, 64px);
@@ -32,6 +33,7 @@ a { color: inherit; }
 button { font: inherit; }
 
 .cath {
+  position: relative;
   min-width: 320px;
   min-height: 100svh;
   display: flex;
@@ -43,19 +45,156 @@ button { font: inherit; }
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
+#ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--flame);
   outline-offset: 3px;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 .wrap {
-  width: min(1180px, 100%);
+  width: min(1280px, 100%);
   margin-inline: auto;
   padding-inline: var(--gut);
 }
-.wrap-narrow { width: min(720px, 100%); }
+
+.products {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.products > .wrap {
+  flex: 0 0 auto;
+  margin-block: auto;
+  padding-block: clamp(28px, 5vw, 64px);
+  box-sizing: border-box;
+}
+.mission {
+  margin: 0 0 clamp(32px, 5vw, 56px);
+  text-align: center;
+}
+
+.products-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+.product {
+  --mx: 50%;
+  --my: 0%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  isolation: isolate;
+  transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+.product::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(380px circle at var(--mx) var(--my), rgba(224, 74, 26, 0.14), transparent 58%);
+  opacity: 0;
+  transition: opacity 280ms ease;
+  z-index: 2;
+}
+a.product:hover {
+  border-color: color-mix(in srgb, var(--flame) 50%, var(--line));
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -28px rgba(224, 74, 26, 0.5);
+}
+a.product:hover::after { opacity: 1; }
+a.product:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--flame);
+}
+
+.viz {
+  position: relative;
+  z-index: 1;
+  height: 92px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 120%, var(--flame-wash, #3a1c12) 0%, transparent 62%),
+    var(--paper-deep);
+}
+.viz svg { display: block; width: 100%; height: 100%; }
+.product-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 6px;
+  padding: 14px 16px 16px;
+  background: var(--card);
+}
+.product h2 {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.1;
+  letter-spacing: -0.014em;
+  text-wrap: balance;
+}
+a.product h2::after {
+  content: "↗";
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  opacity: 0.7;
+  transition: color 220ms ease, opacity 220ms ease;
+}
+a.product:hover h2::after,
+a.product:focus-visible h2::after {
+  color: var(--flame);
+  opacity: 1;
+}
+.product p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
 
 .display {
   font-family: var(--serif);
@@ -64,18 +203,29 @@ button:focus-visible {
   letter-spacing: -0.014em;
   text-wrap: balance;
 }
-.display em { font-style: normal; color: var(--flame); }
+.display em {
+  font-style: normal;
+  color: var(--flame);
+  text-shadow: 0 0 42px rgba(224, 74, 26, 0.45);
+  animation: flame 4.5s ease-in-out infinite;
+}
 h1.display {
   margin: 0;
-  font-size: clamp(38px, 5.4vw, 68px);
+  font-size: clamp(40px, 6.8vw, 92px);
+  max-width: none;
+  white-space: nowrap;
 }
 .lede {
-  max-width: 44ch;
-  margin: 16px 0 0;
-  font-size: clamp(16px, 1.5vw, 18px);
-  line-height: 1.6;
+  max-width: 42ch;
+  margin: 18px auto 0;
+  font-size: clamp(16px, 1.7vw, 20px);
+  line-height: 1.5;
   color: var(--ink-2);
   text-wrap: pretty;
+}
+@keyframes flame {
+  0%, 100% { text-shadow: 0 0 28px rgba(224, 74, 26, 0.28); }
+  50% { text-shadow: 0 0 56px rgba(224, 74, 26, 0.7); }
 }
 
 .skip {
@@ -94,11 +244,11 @@ h1.display {
 .skip:focus { transform: translateY(0); }
 
 .cath-head {
-  flex: 0 0 auto;
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
 .cath-head > .wrap {
@@ -128,75 +278,147 @@ h1.display {
 }
 
 #main {
+  position: relative;
+  z-index: 1;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   min-height: 0;
 }
 
-.products {
-  flex: 1 1 auto;
-}
-.products > .wrap {
-  padding-block: clamp(36px, 6vw, 80px);
-  box-sizing: border-box;
-}
-.mission { margin-bottom: clamp(28px, 4vw, 48px); }
+.product p b { color: var(--ink); font-weight: 500; }
+a.product:hover h2 { color: var(--flame); }
 
-.grid-rule {
-  display: grid;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
+.product.soon {
+  pointer-events: none;
+  cursor: default;
+  user-select: none;
 }
-.grid-1 { grid-template-columns: minmax(0, 1fr); }
-.grid-rule > * { background: var(--card); }
+.product.soon::after { display: none; }
+.product.soon .product-copy { opacity: 0.78; }
+.product.soon .scan,
+.product.soon .cell,
+.product.soon .hub,
+.product.soon .ring,
+.product.soon .wave { animation: none; }
+.product .status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  margin: 0;
+  padding: 3px 7px;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  border: 1px solid var(--line-strong);
+  text-wrap: nowrap;
+}
+.product .status-live { color: var(--ink); border-color: color-mix(in srgb, var(--flame) 40%, var(--line)); }
 
-.product {
-  display: block;
-  padding: 28px 24px;
-  text-decoration: none;
-  color: inherit;
+.scan {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: scan 3.2s ease-in-out infinite;
 }
-.product .num {
-  margin: 0 0 18px;
+.cell { animation: cell 2.8s ease-in-out infinite; }
+.hub { transform-origin: center; transform-box: fill-box; animation: hub 2.4s ease-in-out infinite; }
+.ring { transform-origin: 80px 74px; animation: ring 3s ease-out infinite; }
+.wave { animation: wave 2.2s linear infinite; }
+
+@keyframes scan {
+  0%, 100% { transform: translateY(-18px); opacity: .2; }
+  50% { transform: translateY(18px); opacity: .85; }
+}
+@keyframes cell {
+  0%, 100% { opacity: .25; }
+  50% { opacity: 1; }
+}
+@keyframes hub {
+  0%, 100% { transform: scale(1); opacity: .55; }
+  50% { transform: scale(1.45); opacity: 1; }
+}
+@keyframes ring {
+  0% { transform: scale(.55); opacity: .55; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+@keyframes wave {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40px); }
+}
+
+@media (max-width: 1100px) {
+  h1.display { white-space: normal; }
+}
+@media (max-width: 900px) {
+  .cath { min-height: 0; display: block; }
+  #main, .products { display: block; }
+  .products-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .products > .wrap { padding-block: clamp(28px, 8vw, 48px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product { transition: none; }
+  a.product:hover { transform: none; }
+  .scan, .cell, .hub, .ring, .wave, .display em { animation: none; }
+}
+
+.network {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  backdrop-filter: blur(14px);
+}
+.network > .wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 32px;
+  min-height: 56px;
+  padding-block: 14px;
+}
+.network-kicker {
+  margin: 0;
   font-family: var(--mono);
   font-size: 11.5px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--ink-3);
+  white-space: nowrap;
 }
-.product h2 {
-  margin: 0 0 10px;
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(28px, 3vw, 36px);
-  line-height: 1.06;
-  letter-spacing: -0.014em;
-  text-wrap: balance;
+.network nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px 22px;
 }
-.product p {
-  margin: 0;
-  max-width: 46ch;
-  font-size: 16px;
-  line-height: 1.55;
+.network a {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--ink-2);
-  text-wrap: pretty;
+  text-decoration: none;
 }
-.product p b { color: var(--ink); font-weight: 500; }
-a.product:hover { background: var(--paper-deep); }
-a.product:hover h2 { color: var(--flame); }
+.network a:hover { color: var(--flame); }
 
 @media (max-width: 900px) {
-  .products > .wrap { padding-block: clamp(28px, 8vw, 48px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  a.product { transition: none; }
+  .network > .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .network nav { justify-content: flex-start; }
 }
 </style>
 </head>
 <body class="cath">
+<canvas id="ambient" aria-hidden="true"></canvas>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="cath-head">
@@ -222,43 +444,190 @@ a.product:hover h2 { color: var(--flame); }
       </svg>
       <span>Cathedral</span>
     </a>
-    <span class="cath-head-meta">Subnet 49</span>
+    <span class="cath-head-meta">Subnet 39</span>
   </div>
 </header>
 
 <main id="main">
   <section class="products">
-    <div class="wrap wrap-narrow">
+    <div class="wrap">
       <div class="mission">
         <h1 class="display">A product-centric <em>lab</em>.</h1>
-        <p class="lede">We ship the product, then put it on the network.
-          Four products, built on Bittensor subnet&nbsp;49.</p>
+        <p class="lede">We build useful products first. Proven workloads graduate to the Cathedral network.</p>
       </div>
-      <div class="grid-rule grid-1">
+      <div class="products-row">
         <a class="product" href="https://polaris.computer" target="_blank" rel="noopener">
-          <p class="num">01 / Sandbox</p>
-          <h2>Polaris Compute</h2>
-          <p>The last sandbox you'll ever need.
-             <b>Blazing fast</b>, attested and verifiable.</p>
+          <span class="sr-only">Opens in a new tab</span>
+          <div class="viz" aria-hidden="true">
+            <p class="status status-live">Live</p>
+            <svg viewBox="0 0 160 148" fill="none">
+              <rect x="38" y="36" width="84" height="76" rx="8" stroke="#4a443a" stroke-width="1.4"/>
+              <rect x="48" y="46" width="64" height="44" rx="4" stroke="#e04a1a" stroke-opacity=".55" stroke-width="1.2"/>
+              <rect class="scan" x="50" y="64" width="60" height="8" fill="#e04a1a" fill-opacity=".28"/>
+              <circle cx="52" cy="100" r="2.2" fill="#e04a1a"/>
+              <circle cx="80" cy="100" r="2.2" fill="#8a8376"/>
+              <circle cx="108" cy="100" r="2.2" fill="#8a8376"/>
+            </svg>
+          </div>
+          <div class="product-copy">
+            <h2>Polaris</h2>
+            <p>Persistent, attested computers for agents.
+               Spend limits. Verifiable receipts.</p>
+            <p class="sr-only">Live</p>
+          </div>
         </a>
-        <article class="product">
-          <p class="num">02 / Models</p>
-          <h2>Rubric</h2>
-          <p>Great small models, distilled on-chain. <b>Security first</b>.</p>
+        <a class="product" href="https://github.com/cathedralai/cathedral-distill" target="_blank" rel="noopener">
+          <span class="sr-only">Opens in a new tab</span>
+          <div class="viz" aria-hidden="true">
+            <p class="status">Research</p>
+            <svg viewBox="0 0 160 148" fill="none">
+              <g fill="#e04a1a">
+                <rect class="cell" x="34" y="32" width="14" height="14" rx="2" style="animation-delay:0s" opacity=".4"/>
+                <rect class="cell" x="54" y="32" width="14" height="14" rx="2" style="animation-delay:.2s" opacity=".7"/>
+                <rect class="cell" x="74" y="32" width="14" height="14" rx="2" style="animation-delay:.4s"/>
+                <rect class="cell" x="94" y="32" width="14" height="14" rx="2" style="animation-delay:.1s" opacity=".35"/>
+                <rect class="cell" x="114" y="32" width="14" height="14" rx="2" style="animation-delay:.55s"/>
+                <rect class="cell" x="34" y="52" width="14" height="14" rx="2" style="animation-delay:.3s"/>
+                <rect class="cell" x="54" y="52" width="14" height="14" rx="2" style="animation-delay:.05s" opacity=".5"/>
+                <rect class="cell" x="74" y="52" width="14" height="14" rx="2" style="animation-delay:.7s"/>
+                <rect class="cell" x="94" y="52" width="14" height="14" rx="2" style="animation-delay:.15s"/>
+                <rect class="cell" x="114" y="52" width="14" height="14" rx="2" style="animation-delay:.45s" opacity=".3"/>
+                <rect class="cell" x="34" y="72" width="14" height="14" rx="2" style="animation-delay:.6s" opacity=".45"/>
+                <rect class="cell" x="54" y="72" width="14" height="14" rx="2" style="animation-delay:.25s"/>
+                <rect class="cell" x="74" y="72" width="14" height="14" rx="2" style="animation-delay:.8s" opacity=".6"/>
+                <rect class="cell" x="94" y="72" width="14" height="14" rx="2" style="animation-delay:.35s"/>
+                <rect class="cell" x="114" y="72" width="14" height="14" rx="2" style="animation-delay:.1s" opacity=".4"/>
+                <rect class="cell" x="54" y="92" width="14" height="14" rx="2" style="animation-delay:.5s"/>
+                <rect class="cell" x="74" y="92" width="14" height="14" rx="2" style="animation-delay:.2s"/>
+                <rect class="cell" x="94" y="92" width="14" height="14" rx="2" style="animation-delay:.65s" opacity=".55"/>
+              </g>
+            </svg>
+          </div>
+          <div class="product-copy">
+            <h2>Distilled Models</h2>
+            <p>Great small models. <b>Security first</b>.</p>
+            <p class="sr-only">Research</p>
+          </div>
+        </a>
+        <article class="product soon" aria-disabled="true">
+          <div class="viz" aria-hidden="true">
+            <p class="status">Coming soon</p>
+            <svg viewBox="0 0 160 148" fill="none">
+              <circle class="ring" cx="80" cy="74" r="36" stroke="#e04a1a" stroke-opacity=".5" style="animation-delay:0s"/>
+              <circle class="ring" cx="80" cy="74" r="36" stroke="#e04a1a" stroke-opacity=".4" style="animation-delay:.7s"/>
+              <circle class="ring" cx="80" cy="74" r="36" stroke="#e04a1a" stroke-opacity=".35" style="animation-delay:1.4s"/>
+              <circle cx="80" cy="74" r="6" fill="#e04a1a"/>
+              <g class="wave" stroke="#e04a1a" stroke-opacity=".7" stroke-width="1.4">
+                <path d="M0 118 C 10 108, 20 128, 30 118 S 50 108, 60 118 S 80 128, 90 118 S 110 108, 120 118 S 140 128, 150 118 S 170 108, 180 118"/>
+              </g>
+            </svg>
+          </div>
+          <div class="product-copy">
+            <h2>Vox</h2>
+            <p>Voice infrastructure for <b>Africa and beyond</b>.</p>
+            <p class="sr-only">Coming soon</p>
+          </div>
         </article>
-        <a class="product" href="https://vox.computer" target="_blank" rel="noopener">
-          <p class="num">03 / Voice</p>
-          <h2>Vox</h2>
-          <p>Voice infrastructure for <b>Africa and beyond</b>.</p>
-        </a>
-        <a class="product" href="https://bigidea.africa" target="_blank" rel="noopener">
-          <p class="num">04 / Open</p>
-          <h2>Big Africa</h2>
-          <p>Models for the <b>African continent</b>.</p>
-        </a>
+        <article class="product soon" aria-disabled="true">
+          <div class="viz" aria-hidden="true">
+            <p class="status">Coming soon</p>
+            <svg viewBox="0 0 160 148" fill="none">
+              <path d="M78 18c18 2 32 16 34 34 4 16-4 38-18 48-8 8-16 10-24 4-16-4-26-20-24-38-4-14 8-32 32-48z" stroke="#4a443a" stroke-width="1.4" fill="#1a1714"/>
+              <circle class="hub" cx="70" cy="52" fill="#e04a1a" style="animation-delay:0s"/>
+              <circle class="hub" cx="92" cy="44" fill="#e04a1a" style="animation-delay:.4s"/>
+              <circle class="hub" cx="86" cy="72" fill="#e04a1a" style="animation-delay:.8s"/>
+              <circle class="hub" cx="68" cy="84" fill="#e04a1a" style="animation-delay:.2s"/>
+              <path d="M70 52L92 44L86 72L68 84Z" stroke="#e04a1a" stroke-opacity=".35" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="product-copy">
+            <h2>Big Africa</h2>
+            <p>Models for the <b>African continent</b>.</p>
+            <p class="sr-only">Coming soon</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 </main>
+<footer class="network">
+  <div class="wrap">
+    <p class="network-kicker">Cathedral network · SN39</p>
+    <nav aria-label="Cathedral network">
+      <a href="https://cathedral.computer/contribute/" target="_blank" rel="noopener">Mine</a>
+      <a href="https://cathedral.computer/technology/" target="_blank" rel="noopener">Verify</a>
+      <a href="https://cathedral.computer/workers/" target="_blank" rel="noopener">Receipts</a>
+      <a href="https://cathedral.computer/network/" target="_blank" rel="noopener">Network status</a>
+      <a href="https://cathedral.computer/docs/" target="_blank" rel="noopener">Documentation</a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function () {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const ambient = document.getElementById("ambient");
+  const sparks = Array.from({ length: 42 }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    vx: (Math.random() - 0.5) * 0.00018,
+    vy: (Math.random() - 0.5) * 0.00012,
+    r: 0.6 + Math.random() * 1.6
+  }));
+  let ctx = null;
+
+  function fit() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    ambient.width = Math.max(1, Math.floor(w * dpr));
+    ambient.height = Math.max(1, Math.floor(h * dpr));
+    ambient.style.width = w + "px";
+    ambient.style.height = h + "px";
+    ctx = ambient.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw(t) {
+    if (!ctx) return;
+    const w = ambient.clientWidth;
+    const h = ambient.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    const g = ctx.createRadialGradient(w * 0.5, h * 0.42, 0, w * 0.5, h * 0.5, w * 0.55);
+    g.addColorStop(0, "rgba(224,74,26,0.10)");
+    g.addColorStop(1, "rgba(224,74,26,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
+    sparks.forEach((s) => {
+      if (!reduce) {
+        s.x += s.vx;
+        s.y += s.vy;
+        if (s.x < 0 || s.x > 1) s.vx *= -1;
+        if (s.y < 0 || s.y > 1) s.vy *= -1;
+      }
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(224,74,26," + (0.18 + Math.sin(t * 0.001 + s.x * 8) * 0.08) + ")";
+      ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+
+  document.querySelectorAll("a.product").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
+      card.style.setProperty("--my", ((e.clientY - r.top) / r.height) * 100 + "%");
+    });
+  });
+
+  window.addEventListener("resize", fit);
+  fit();
+  const start = performance.now();
+  function frame(now) {
+    draw(now - start);
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>
