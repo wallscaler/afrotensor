@@ -2,651 +2,632 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Afrotensor — Own the rise of African intelligence</title>
-<meta name="description" content="Afrotensor is a launchpad on Bittensor where the world backs African AI builders — and shares the upside. Founding backers commit 200 TAO. Teams get capital, compute, and verified-milestone funding.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Cathedral</title>
+<meta name="description" content="Cathedral is a product-centric lab. Useful products first. Proven workloads graduate to the Cathedral network on Bittensor subnet 39.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#04050e;
-  --ink:#e8ecff;
-  --dim:#8b93b8;
-  --blue:#2545ff;
-  --blue-soft:#8b9cd8;
-  --gold:#c9a25b;
-  --hair:rgba(120,140,255,.16);
+:root {
+  color-scheme: dark;
+  --paper: #0c0a08;
+  --paper-deep: #14110e;
+  --card: #1e1b17;
+  --ink: #f2efe6;
+  --ink-2: #b8b2a6;
+  --ink-3: #8a8376;
+  --line: #2c2822;
+  --line-strong: #4a443a;
+  --flame: #e04a1a;
+  --flame-wash: #3a1c12;
+  --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --mono: "SFMono-Regular", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+  --gut: clamp(20px, 5vw, 64px);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
-  font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-#gl{position:fixed;inset:0;display:block}
-.grain{position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
-.vig{position:fixed;inset:0;pointer-events:none;z-index:4;
-  background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(2,3,10,.55) 100%)}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); }
+a { color: inherit; }
+button { font: inherit; }
 
-/* ---------- chrome ---------- */
-header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;
-  justify-content:space-between;padding:22px clamp(20px,4vw,52px)}
-.wordmark{font-family:'Saira Condensed';font-weight:700;font-size:19px;letter-spacing:.34em;
-  text-transform:uppercase;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
-.wordmark i{width:9px;height:9px;border-radius:50%;background:var(--gold);
-  box-shadow:0 0 10px 1px rgba(201,162,91,.45);display:inline-block}
-.wordmark em{color:var(--blue-soft);font-style:normal}
-.tag{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;color:var(--dim);
-  text-transform:uppercase}
-@media(max-width:640px){.tag{display:none}}
+.cath {
+  position: relative;
+  min-width: 320px;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+#ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 
-nav.dots{position:fixed;right:clamp(14px,2.6vw,34px);top:50%;transform:translateY(-50%);
-  z-index:40;display:flex;flex-direction:column;gap:14px}
-nav.dots button{width:34px;height:34px;border:none;background:none;cursor:pointer;position:relative}
-nav.dots button::after{content:'';position:absolute;inset:0;margin:auto;width:7px;height:7px;
-  border-radius:50%;background:var(--dim);opacity:.5;transition:all .35s ease}
-nav.dots button.on::after{background:var(--gold);opacity:1;box-shadow:0 0 8px rgba(201,162,91,.5)}
-nav.dots button:hover::after{opacity:1}
-nav.dots button:focus-visible{outline:1px solid var(--blue-soft);border-radius:50%}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--flame);
+  outline-offset: 3px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
-.hint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:40;
-  font-family:'JetBrains Mono';font-size:10px;letter-spacing:.22em;color:var(--dim);
-  text-transform:uppercase;display:flex;align-items:center;gap:10px;transition:opacity .5s}
-.hint svg{animation:nudge 2.2s ease-in-out infinite}
-@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-.hint.gone{opacity:0}
+.wrap {
+  width: min(1280px, 100%);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+}
 
-/* ---------- pages ---------- */
-main{position:fixed;inset:0;z-index:20}
-.page{position:absolute;inset:0;display:flex;align-items:center;
-  padding:0 clamp(20px,6vw,90px);opacity:0;pointer-events:none;
-  will-change:opacity,transform}
-.page::before{content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(97deg,rgba(3,4,12,.82) 0%,rgba(3,4,12,.45) 38%,transparent 62%)}
-.page.pg-1::before{background:radial-gradient(70% 75% at 50% 52%,rgba(3,4,12,.78) 30%,transparent 78%)}
-.page .inner{position:relative}
-.page .inner{max-width:640px}
-.page.pg-2 .inner{max-width:1020px;margin:0 auto}
-.eyebrow{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px}
-.eyebrow::before{content:'';width:26px;height:1px;background:var(--gold);opacity:.7}
-h1{font-family:'Saira Condensed';font-weight:700;text-transform:uppercase;
-  font-size:clamp(42px,7vw,86px);line-height:.98;letter-spacing:.01em;margin-bottom:22px;
-  text-wrap:balance}
-h1 .g{color:transparent;background:linear-gradient(100deg,#8fa2e6,#cdb27a);
-  -webkit-background-clip:text;background-clip:text}
-.lede{font-size:clamp(15px,1.35vw,18px);line-height:1.65;color:var(--dim);max-width:50ch;
-  margin-bottom:26px;text-wrap:pretty}
-.lede b{color:var(--ink);font-weight:600}
-.byline{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--dim);margin-bottom:32px}
-.byline b{color:var(--blue-soft);font-weight:500}
+.products {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.products > .wrap {
+  flex: 0 0 auto;
+  margin-block: auto;
+  padding-block: clamp(28px, 5vw, 64px);
+  box-sizing: border-box;
+}
+.mission {
+  margin: 0 0 clamp(32px, 5vw, 56px);
+  text-align: center;
+}
 
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
-.btn{font-family:'Saira Condensed';font-weight:600;font-size:15px;letter-spacing:.16em;
-  text-transform:uppercase;padding:15px 28px;border-radius:3px;cursor:pointer;
-  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;border:1px solid transparent;
-  text-decoration:none;display:inline-flex;align-items:center;gap:10px}
-.btn:hover{transform:translateY(-2px)}
-.btn.gold{background:var(--gold);color:#141007;box-shadow:0 6px 26px -10px rgba(201,162,91,.5)}
-.btn.gold:hover{box-shadow:0 10px 32px -8px rgba(201,162,91,.6)}
-.btn.ghost{background:rgba(37,69,255,.08);border-color:var(--hair);color:var(--ink)}
-.btn.ghost:hover{background:rgba(37,69,255,.18)}
-.btn:focus-visible{outline:2px solid var(--blue-soft);outline-offset:2px}
+.products-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+.product {
+  --mx: 50%;
+  --my: 0%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  isolation: isolate;
+  transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+.product::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(380px circle at var(--mx) var(--my), rgba(224, 74, 26, 0.14), transparent 58%);
+  opacity: 0;
+  transition: opacity 280ms ease;
+  z-index: 2;
+}
+a.product:hover {
+  border-color: color-mix(in srgb, var(--flame) 50%, var(--line));
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -28px rgba(224, 74, 26, 0.5);
+}
+a.product:hover::after { opacity: 1; }
+a.product:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--flame);
+}
 
-.chips{display:flex;gap:10px;flex-wrap:wrap}
-.chip{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.08em;color:var(--dim);
-  border:1px solid var(--hair);border-radius:999px;padding:7px 14px;background:rgba(6,10,30,.45);
-  backdrop-filter:blur(4px)}
-.chip b{color:var(--gold);font-weight:500}
+.viz {
+  position: relative;
+  z-index: 1;
+  height: 92px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 120%, var(--flame-wash, #3a1c12) 0%, transparent 62%),
+    var(--paper-deep);
+}
+.viz svg { display: block; width: 100%; height: 100%; }
+.product-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 6px;
+  padding: 14px 16px 16px;
+  background: var(--card);
+}
+.product h2 {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.1;
+  letter-spacing: -0.014em;
+  text-wrap: balance;
+}
+a.product h2::after {
+  content: "↗";
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  opacity: 0.7;
+  transition: color 220ms ease, opacity 220ms ease;
+}
+a.product:hover h2::after,
+a.product:focus-visible h2::after {
+  color: var(--flame);
+  opacity: 1;
+}
+.product p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
 
-/* page 2 tiles */
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:34px 0 26px}
-@media(max-width:1080px){.tiles{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:640px){.tiles{grid-template-columns:1fr;gap:9px;margin:20px 0 16px}}
-.tile{border:1px solid var(--hair);border-radius:6px;padding:22px 20px;text-align:left;
-  background:linear-gradient(160deg,rgba(11,16,42,.75),rgba(5,8,22,.75));backdrop-filter:blur(6px);
-  transition:border-color .3s,transform .3s}
-.tile:hover{border-color:rgba(139,156,216,.4);transform:translateY(-3px)}
-.tile.first{border-color:rgba(201,162,91,.4)}
-.tile.first:hover{border-color:rgba(201,162,91,.6)}
-.tile .num{font-family:'JetBrains Mono';font-size:9.5px;color:var(--blue-soft);letter-spacing:.2em;
-  margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-.tile .num em{font-style:normal;color:var(--gold);letter-spacing:.14em}
-.tile h3{font-family:'Saira Condensed';font-weight:600;font-size:21px;letter-spacing:.08em;
-  text-transform:uppercase;margin-bottom:8px}
-.tile p{font-size:13px;line-height:1.6;color:var(--dim);text-wrap:pretty}
-.tile p b{color:var(--ink);font-weight:600}
-.kicker{text-align:center;font-family:'Saira Condensed';font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;font-size:clamp(16px,2vw,22px);color:var(--ink)}
-.kicker span{color:var(--gold)}
-.pg-2 .eyebrow,.pg-2 h1{text-align:center;justify-content:center}
-.pg-2 .lede{margin:0 auto 6px;text-align:center}
+.display {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -0.014em;
+  text-wrap: balance;
+}
+.display em {
+  font-style: normal;
+  color: var(--flame);
+  text-shadow: 0 0 42px rgba(224, 74, 26, 0.45);
+  animation: flame 4.5s ease-in-out infinite;
+}
+h1.display {
+  margin: 0;
+  font-size: clamp(40px, 6.8vw, 92px);
+  max-width: none;
+  white-space: nowrap;
+}
+.lede {
+  max-width: 42ch;
+  margin: 18px auto 0;
+  font-size: clamp(16px, 1.7vw, 20px);
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+@keyframes flame {
+  0%, 100% { text-shadow: 0 0 28px rgba(224, 74, 26, 0.28); }
+  50% { text-shadow: 0 0 56px rgba(224, 74, 26, 0.7); }
+}
 
-/* page 3 doors */
-.doors{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px;max-width:860px}
-@media(max-width:760px){.doors{grid-template-columns:1fr;gap:12px;margin-top:20px}}
-.door{border:1px solid var(--hair);border-radius:8px;padding:28px 26px;
-  background:linear-gradient(165deg,rgba(13,20,55,.8),rgba(5,8,24,.85));backdrop-filter:blur(8px);
-  transition:border-color .3s,transform .3s}
-.door:hover{transform:translateY(-3px)}
-.door.inv:hover{border-color:rgba(255,184,0,.5)}
-.door.team:hover{border-color:rgba(93,123,255,.55)}
-.door .role{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:12px}
-.door.inv .role{color:var(--gold)}.door.team .role{color:var(--blue-soft)}
-.door h3{font-family:'Saira Condensed';font-weight:700;font-size:27px;letter-spacing:.05em;
-  text-transform:uppercase;margin-bottom:8px}
-.door p{font-size:13.5px;line-height:1.6;color:var(--dim);margin-bottom:20px;min-height:66px;text-wrap:pretty}
-.door p b{color:var(--ink)}
-.field{display:flex;gap:8px}
-.field input{flex:1;min-width:0;background:rgba(4,6,18,.7);border:1px solid var(--hair);border-radius:3px;
-  color:var(--ink);font-family:'JetBrains Mono';font-size:12.5px;padding:12px 13px;outline:none;
-  transition:border-color .25s}
-.field input:focus{border-color:var(--blue-soft)}
-.field .btn{padding:12px 18px;font-size:13px}
-.micro{margin-top:11px;font-family:'JetBrains Mono';font-size:10px;color:var(--dim);letter-spacing:.05em}
-footer.mini{position:absolute;bottom:24px;left:0;right:0;text-align:center;
-  font-family:'JetBrains Mono';font-size:10px;letter-spacing:.12em;color:var(--dim)}
-footer.mini a{color:var(--dim);text-decoration:none;border-bottom:1px solid var(--hair)}
-footer.mini a:hover{color:var(--ink)}
+.skip {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  color: var(--paper);
+  background: var(--ink);
+  transform: translateY(-160%);
+}
+.skip:focus { transform: translateY(0); }
 
-/* fallback when webgl missing / reduced capability */
-body.flat{overflow:auto}
-body.flat main{position:static}
-body.flat .page{position:relative;min-height:100vh;opacity:1;pointer-events:auto;transform:none}
-body.flat #gl,body.flat nav.dots,body.flat .hint{display:none}
+.cath-head {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.cath-head > .wrap {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+}
+.cath-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.cathedral-mark { width: 20px; height: 20px; }
+.cathedral-mark__frame,
+.cathedral-mark__wheel { stroke: currentColor; }
+.cathedral-mark__hub { fill: var(--flame); }
+.cath-head-meta {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+#main {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.product p b { color: var(--ink); font-weight: 500; }
+a.product:hover h2 { color: var(--flame); }
+
+.product.soon {
+  pointer-events: none;
+  cursor: default;
+  user-select: none;
+}
+.product.soon::after { display: none; }
+.product.soon .product-copy { opacity: 0.78; }
+.product.soon .scan,
+.product.soon .cell,
+.product.soon .hub,
+.product.soon .ring,
+.product.soon .wave { animation: none; }
+.product .status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  margin: 0;
+  padding: 3px 7px;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  border: 1px solid var(--line-strong);
+  text-wrap: nowrap;
+}
+.product .status-live { color: var(--ink); border-color: color-mix(in srgb, var(--flame) 40%, var(--line)); }
+
+.scan {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: scan 3.2s ease-in-out infinite;
+}
+.cell { animation: cell 2.8s ease-in-out infinite; }
+.hub { transform-origin: center; transform-box: fill-box; animation: hub 2.4s ease-in-out infinite; }
+.ring { transform-origin: 80px 74px; animation: ring 3s ease-out infinite; }
+.wave { animation: wave 2.2s linear infinite; }
+
+@keyframes scan {
+  0%, 100% { transform: translateY(-18px); opacity: .2; }
+  50% { transform: translateY(18px); opacity: .85; }
+}
+@keyframes cell {
+  0%, 100% { opacity: .25; }
+  50% { opacity: 1; }
+}
+@keyframes hub {
+  0%, 100% { transform: scale(1); opacity: .55; }
+  50% { transform: scale(1.45); opacity: 1; }
+}
+@keyframes ring {
+  0% { transform: scale(.55); opacity: .55; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+@keyframes wave {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40px); }
+}
+
+@media (max-width: 1100px) {
+  h1.display { white-space: normal; }
+}
+@media (max-width: 900px) {
+  .cath { min-height: 0; display: block; }
+  #main, .products { display: block; }
+  .products-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .products > .wrap { padding-block: clamp(28px, 8vw, 48px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product { transition: none; }
+  a.product:hover { transform: none; }
+  .scan, .cell, .hub, .ring, .wave, .display em { animation: none; }
+}
+
+.network {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  backdrop-filter: blur(14px);
+}
+.network > .wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 32px;
+  min-height: 56px;
+  padding-block: 14px;
+}
+.network-kicker {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.network nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px 22px;
+}
+.network a {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.network a:hover { color: var(--flame); }
+
+@media (max-width: 900px) {
+  .network > .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .network nav { justify-content: flex-start; }
+}
 </style>
 </head>
-<body>
-<canvas id="gl" aria-hidden="true"></canvas>
-<div class="vig"></div><div class="grain"></div>
+<body class="cath">
+<canvas id="ambient" aria-hidden="true"></canvas>
+<a class="skip" href="#main">Skip to content</a>
 
-<header>
-  <a class="wordmark" href="#top" data-go="0"><i></i>Afro<em>tensor</em></a>
-  <span class="tag">African intelligence · Bittensor rails</span>
+<header class="cath-head">
+  <div class="wrap">
+    <a class="cath-brand" href="/" aria-label="Cathedral home">
+      <svg class="cathedral-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+        <circle class="cathedral-mark__frame" cx="32" cy="32" r="26" stroke-width="4.2" stroke-linecap="round" stroke-dasharray="24 16.84" transform="rotate(-26.4 32 32)"/>
+        <g class="cathedral-mark__wheel">
+          <g transform="translate(32 32) scale(.68) translate(-32 -32)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="32" r="22"/>
+            <circle cx="32" cy="32" r="6.5"/>
+            <circle cx="32" cy="16" r="7" opacity=".85"/>
+            <circle cx="43.314" cy="20.686" r="7" opacity=".85"/>
+            <circle cx="48" cy="32" r="7" opacity=".85"/>
+            <circle cx="43.314" cy="43.314" r="7" opacity=".85"/>
+            <circle cx="32" cy="48" r="7" opacity=".85"/>
+            <circle cx="20.686" cy="43.314" r="7" opacity=".85"/>
+            <circle cx="16" cy="32" r="7" opacity=".85"/>
+            <circle cx="20.686" cy="20.686" r="7" opacity=".85"/>
+            <circle class="cathedral-mark__hub" cx="32" cy="32" r="1.6" stroke="none"/>
+          </g>
+        </g>
+      </svg>
+      <span>Cathedral</span>
+    </a>
+    <span class="cath-head-meta">Subnet 39</span>
+  </div>
 </header>
 
-<nav class="dots" aria-label="Pages">
-  <button data-go="0" class="on" aria-label="Afrotensor"></button>
-  <button data-go="1" aria-label="The mission"></button>
-  <button data-go="2" aria-label="Join the waitlist"></button>
-</nav>
-
-<main>
-  <!-- ————— PAGE 1 — THE CLAIM ————— -->
-  <section class="page pg-0" id="top">
-    <div class="inner">
-      <div class="eyebrow">A launchpad for African AI</div>
-      <h1>Own the rise of<br><span class="g">African intelligence</span></h1>
-      <p class="lede">Afrotensor is where the world backs African AI builders —
-        and shares the upside. Capital flows in on <b>Bittensor&nbsp;rails</b>;
-        models, subnets, and ownership flow back&nbsp;out.</p>
-      <p class="byline">By the team behind
-        <b>Cathedral</b> · <b>Polaris</b> · <b>Vox</b> · <b>Big&nbsp;Africa</b></p>
-      <div class="cta-row">
-        <button class="btn gold" data-go="2">Back the mission →</button>
-        <button class="btn ghost" data-go="2">Build with us →</button>
+<main id="main">
+  <section class="products">
+    <div class="wrap">
+      <div class="mission">
+        <h1 class="display">A product-centric <em>lab</em>.</h1>
+        <p class="lede">We build useful products first. Proven workloads graduate to the Cathedral network.</p>
       </div>
-      <div class="chips">
-        <span class="chip">Founding cohort · <b>200 TAO</b> per backer</span>
-        <span class="chip">Adoption <b>+52% YoY</b></span>
-        <span class="chip">Diaspora capital → <b>ownership</b></span>
+      <div class="products-row">
+        <a class="product" href="https://polaris.computer" target="_blank" rel="noopener">
+          <span class="sr-only">Opens in a new tab</span>
+          <div class="viz" aria-hidden="true">
+            <p class="status status-live">Live</p>
+            <svg viewBox="0 0 160 148" fill="none">
+              <rect x="38" y="36" width="84" height="76" rx="8" stroke="#4a443a" stroke-width="1.4"/>
+              <rect x="48" y="46" width="64" height="44" rx="4" stroke="#e04a1a" stroke-opacity=".55" stroke-width="1.2"/>
+              <rect class="scan" x="50" y="64" width="60" height="8" fill="#e04a1a" fill-opacity=".28"/>
+              <circle cx="52" cy="100" r="2.2" fill="#e04a1a"/>
+              <circle cx="80" cy="100" r="2.2" fill="#8a8376"/>
+              <circle cx="108" cy="100" r="2.2" fill="#8a8376"/>
+            </svg>
+          </div>
+          <div class="product-copy">
+            <h2>Polaris</h2>
+            <p>Persistent, attested computers for agents.
+               Spend limits. Verifiable receipts.</p>
+            <p class="sr-only">Live</p>
+          </div>
+        </a>
+        <a class="product" href="https://github.com/cathedralai/cathedral-distill" target="_blank" rel="noopener">
+          <span class="sr-only">Opens in a new tab</span>
+          <div class="viz" aria-hidden="true">
+            <p class="status">Research</p>
+            <svg viewBox="0 0 160 148" fill="none">
+              <g fill="#e04a1a">
+                <rect class="cell" x="34" y="32" width="14" height="14" rx="2" style="animation-delay:0s" opacity=".4"/>
+                <rect class="cell" x="54" y="32" width="14" height="14" rx="2" style="animation-delay:.2s" opacity=".7"/>
+                <rect class="cell" x="74" y="32" width="14" height="14" rx="2" style="animation-delay:.4s"/>
+                <rect class="cell" x="94" y="32" width="14" height="14" rx="2" style="animation-delay:.1s" opacity=".35"/>
+                <rect class="cell" x="114" y="32" width="14" height="14" rx="2" style="animation-delay:.55s"/>
+                <rect class="cell" x="34" y="52" width="14" height="14" rx="2" style="animation-delay:.3s"/>
+                <rect class="cell" x="54" y="52" width="14" height="14" rx="2" style="animation-delay:.05s" opacity=".5"/>
+                <rect class="cell" x="74" y="52" width="14" height="14" rx="2" style="animation-delay:.7s"/>
+                <rect class="cell" x="94" y="52" width="14" height="14" rx="2" style="animation-delay:.15s"/>
+                <rect class="cell" x="114" y="52" width="14" height="14" rx="2" style="animation-delay:.45s" opacity=".3"/>
+                <rect class="cell" x="34" y="72" width="14" height="14" rx="2" style="animation-delay:.6s" opacity=".45"/>
+                <rect class="cell" x="54" y="72" width="14" height="14" rx="2" style="animation-delay:.25s"/>
+                <rect class="cell" x="74" y="72" width="14" height="14" rx="2" style="animation-delay:.8s" opacity=".6"/>
+                <rect class="cell" x="94" y="72" width="14" height="14" rx="2" style="animation-delay:.35s"/>
+                <rect class="cell" x="114" y="72" width="14" height="14" rx="2" style="animation-delay:.1s" opacity=".4"/>
+                <rect class="cell" x="54" y="92" width="14" height="14" rx="2" style="animation-delay:.5s"/>
+                <rect class="cell" x="74" y="92" width="14" height="14" rx="2" style="animation-delay:.2s"/>
+                <rect class="cell" x="94" y="92" width="14" height="14" rx="2" style="animation-delay:.65s" opacity=".55"/>
+              </g>
+            </svg>
+          </div>
+          <div class="product-copy">
+            <h2>Distilled Models</h2>
+            <p>Great small models. <b>Security first</b>.</p>
+            <p class="sr-only">Research</p>
+          </div>
+        </a>
+        <article class="product soon" aria-disabled="true">
+          <div class="viz" aria-hidden="true">
+            <p class="status">Coming soon</p>
+            <svg viewBox="0 0 160 148" fill="none">
+              <circle class="ring" cx="80" cy="74" r="36" stroke="#e04a1a" stroke-opacity=".5" style="animation-delay:0s"/>
+              <circle class="ring" cx="80" cy="74" r="36" stroke="#e04a1a" stroke-opacity=".4" style="animation-delay:.7s"/>
+              <circle class="ring" cx="80" cy="74" r="36" stroke="#e04a1a" stroke-opacity=".35" style="animation-delay:1.4s"/>
+              <circle cx="80" cy="74" r="6" fill="#e04a1a"/>
+              <g class="wave" stroke="#e04a1a" stroke-opacity=".7" stroke-width="1.4">
+                <path d="M0 118 C 10 108, 20 128, 30 118 S 50 108, 60 118 S 80 128, 90 118 S 110 108, 120 118 S 140 128, 150 118 S 170 108, 180 118"/>
+              </g>
+            </svg>
+          </div>
+          <div class="product-copy">
+            <h2>Vox</h2>
+            <p>Voice infrastructure for <b>Africa and beyond</b>.</p>
+            <p class="sr-only">Coming soon</p>
+          </div>
+        </article>
+        <article class="product soon" aria-disabled="true">
+          <div class="viz" aria-hidden="true">
+            <p class="status">Coming soon</p>
+            <svg viewBox="0 0 160 148" fill="none">
+              <path d="M78 18c18 2 32 16 34 34 4 16-4 38-18 48-8 8-16 10-24 4-16-4-26-20-24-38-4-14 8-32 32-48z" stroke="#4a443a" stroke-width="1.4" fill="#1a1714"/>
+              <circle class="hub" cx="70" cy="52" fill="#e04a1a" style="animation-delay:0s"/>
+              <circle class="hub" cx="92" cy="44" fill="#e04a1a" style="animation-delay:.4s"/>
+              <circle class="hub" cx="86" cy="72" fill="#e04a1a" style="animation-delay:.8s"/>
+              <circle class="hub" cx="68" cy="84" fill="#e04a1a" style="animation-delay:.2s"/>
+              <path d="M70 52L92 44L86 72L68 84Z" stroke="#e04a1a" stroke-opacity=".35" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="product-copy">
+            <h2>Big Africa</h2>
+            <p>Models for the <b>African continent</b>.</p>
+            <p class="sr-only">Coming soon</p>
+          </div>
+        </article>
       </div>
     </div>
-  </section>
-
-  <!-- ————— PAGE 2 — THE MISSION ————— -->
-  <section class="page pg-2 pg-1">
-    <div class="inner">
-      <div class="eyebrow">The mission</div>
-      <h1>The work is<br><span class="g">already underway</span></h1>
-      <p class="lede">Four product directions, one incentive loop — founding backers commit
-        <b>200&nbsp;TAO</b>, teams ship with capital and compute, and funds release
-        on <b>on-chain proof</b>.</p>
-      <div class="tiles">
-        <div class="tile"><div class="num"><span>01 / MODELS</span></div>
-          <h3>Cathedral</h3>
-          <p>Specialized, <b>distilled models</b> — security-grade intelligence,
-             verified on-chain. Live on Bittensor&nbsp;SN39.</p></div>
-        <div class="tile"><div class="num"><span>02 / COMPUTE</span></div>
-          <h3>Polaris</h3>
-          <p>Secure, <b>blazing-fast sandboxes</b> on verifiable confidential
-             hardware.</p></div>
-        <div class="tile first"><div class="num"><span>03 / AUDIO</span><em>FIRST RAISE</em></div>
-          <h3>Vox</h3>
-          <p><b>Intelligent audio infrastructure</b> for the future — voice for
-             a billion speakers.</p></div>
-        <div class="tile"><div class="num"><span>04 / OPEN</span></div>
-          <h3>Big Africa</h3>
-          <p>The <b>Hugging&nbsp;Face of Africa</b> — the open home for African
-             models and datasets.</p></div>
-      </div>
-      <p class="kicker">Remittance became consumption.<br>
-        <span>Afrotensor turns it into ownership.</span></p>
-    </div>
-  </section>
-
-  <!-- ————— PAGE 3 — THE DOORS ————— -->
-  <section class="page pg-3 pg-2x">
-    <div class="inner">
-      <div class="eyebrow">Join the first cohort</div>
-      <h1>Two doors.<br><span class="g">One future.</span></h1>
-      <div class="doors">
-        <div class="door inv">
-          <div class="role">For investors</div>
-          <h3>Founding Backer</h3>
-          <p>Commit <b>200 TAO</b> to the founding round. First raise:
-             <b>Vox</b> — intelligent audio infrastructure.
-             Milestone-escrowed, published&nbsp;terms.</p>
-          <form class="field" data-kind="Investor">
-            <input type="email" required placeholder="you@email.com" aria-label="Investor email">
-            <button class="btn gold" type="submit">Join waitlist</button>
-          </form>
-          <div class="micro">// limited founding seats · terms shared on reply</div>
-        </div>
-        <div class="door team">
-          <div class="role">For builders</div>
-          <h3>Cohort Team</h3>
-          <p>Building AI for African languages, markets, or infrastructure?
-             Get <b>capital + compute + incubation</b> and launch on Bittensor.</p>
-          <form class="field" data-kind="Team">
-            <input type="email" required placeholder="team@project.africa" aria-label="Team email">
-            <button class="btn ghost" type="submit">Join waitlist</button>
-          </form>
-          <div class="micro">// tell us what you're building · we read everything</div>
-        </div>
-      </div>
-    </div>
-    <footer class="mini">© 2026 Afrotensor ·
-      <a href="https://cathedral.computer" target="_blank" rel="noopener">Cathedral</a> ·
-      <a href="https://polaris.computer" target="_blank" rel="noopener">Polaris</a> ·
-      Vox ·
-      <a href="https://bigidea.africa" target="_blank" rel="noopener">Big Africa</a></footer>
   </section>
 </main>
-
-<div class="hint" id="hint">
-  <svg width="11" height="14" viewBox="0 0 11 14" fill="none"><path d="M5.5 1v11m0 0L1 7.5M5.5 12L10 7.5" stroke="#8b93b8" stroke-width="1.2"/></svg>
-  scroll · swipe · arrows
-</div>
-
+<footer class="network">
+  <div class="wrap">
+    <p class="network-kicker">Cathedral network · SN39</p>
+    <nav aria-label="Cathedral network">
+      <a href="https://cathedral.computer/contribute/" target="_blank" rel="noopener">Mine</a>
+      <a href="https://cathedral.computer/technology/" target="_blank" rel="noopener">Verify</a>
+      <a href="https://cathedral.computer/workers/" target="_blank" rel="noopener">Receipts</a>
+      <a href="https://cathedral.computer/network/" target="_blank" rel="noopener">Network status</a>
+      <a href="https://cathedral.computer/docs/" target="_blank" rel="noopener">Documentation</a>
+    </nav>
+  </div>
+</footer>
 <script>
-/* if the module chain fails (offline, blocked CDN, no WebGL), fall back to a readable stacked page */
-window.__wglGuard = setTimeout(()=>document.body.classList.add('flat'), 3000);
-</script>
-<script type="importmap">
-{"imports":{"three":"https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.min.js"}}
-</script>
-<script type="module">
-import * as THREE from 'three';
+(function () {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const ambient = document.getElementById("ambient");
+  const sparks = Array.from({ length: 42 }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    vx: (Math.random() - 0.5) * 0.00018,
+    vy: (Math.random() - 0.5) * 0.00012,
+    r: 0.6 + Math.random() * 1.6
+  }));
+  let ctx = null;
 
-/* ============================================================
-   AFROTENSOR — one persistent world, three authored chapters.
-   Techniques after MengTo/skills: build-threejs-scroll-worlds
-   (chapter ledger + conductor), pointer-trail-emitter
-   (distance emission), per-point twinkle shaders.
-   ============================================================ */
-
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const coarse = matchMedia('(hover: none)').matches;
-const canvas = document.getElementById('gl');
-let renderer;
-try{
-  renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:false, powerPreference:'high-performance'});
-}catch(e){ document.body.classList.add('flat'); }
-if(renderer){
-clearTimeout(window.__wglGuard); document.body.classList.remove('flat');
-
-renderer.setClearColor(0x04050e, 1);
-const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x04050e, 0.02);
-const camera = new THREE.PerspectiveCamera(40, 1, .1, 400);
-scene.add(camera);
-
-const clock = new THREE.Clock();
-let W=innerWidth, H=innerHeight;
-function resize(){
-  W=innerWidth; H=innerHeight;
-  renderer.setSize(W,H,false);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  camera.aspect = W/H; camera.updateProjectionMatrix();
-}
-addEventListener('resize', resize); resize();
-
-/* ---------- Africa constellation ---------- */
-/* simplified coastline, [lon,lat], clockwise */
-const COAST = [[10,37],[19,32.5],[25,32],[30,31.4],[32.3,31.2],[34.2,27.8],[36,22.8],[37.5,18.5],
-[39.5,15],[43,11.5],[47.5,11.2],[51.3,11.8],[50.5,9],[47.8,5],[44.5,1.5],[41.5,-2],[40.2,-4.5],
-[39.2,-7],[38,-11],[36.5,-15],[35,-19],[34.8,-23],[32.6,-26],[31,-30],[27.5,-33.2],[23,-34.3],
-[19.8,-34.8],[18.3,-33.9],[17.2,-30],[15.2,-26.5],[14.4,-22.5],[12,-17.5],[11.7,-15.5],[13.2,-12],
-[12.2,-8],[11.8,-5],[9.3,-1.5],[8.8,1],[9.6,3.8],[8.4,4.8],[5.5,5],[3,6.3],[-1,5],[-4.5,5.2],
-[-7.8,4.4],[-11,6.5],[-13.3,8.5],[-16.5,12.3],[-17.4,14.7],[-16.3,17.5],[-16.5,20.5],[-14.5,24],
-[-12.9,27.5],[-9.6,31],[-6.8,34],[-5.5,35.9],[-2,35.2],[3,36.8],[7,37],[10,37]];
-function inPoly(x,y,poly){
-  let inside=false;
-  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
-    const xi=poly[i][0], yi=poly[i][1], xj=poly[j][0], yj=poly[j][1];
-    if(((yi>y)!==(yj>y)) && (x < (xj-xi)*(y-yi)/(yj-yi)+xi)) inside=true;
+  function fit() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    ambient.width = Math.max(1, Math.floor(w * dpr));
+    ambient.height = Math.max(1, Math.floor(h * dpr));
+    ambient.style.width = w + "px";
+    ambient.style.height = h + "px";
+    ctx = ambient.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
-  return inside;
-}
-const SC = .30;                                   // world units per degree
-const ll = (lon,lat)=> new THREE.Vector3(lon*SC, lat*SC, 0);
 
-/* fill the silhouette with jittered grid points */
-const pts=[], cols=[], phases=[], sizes=[];
-const cBlue=new THREE.Color(0x2e4ad8), cSoft=new THREE.Color(0x7e91d4), cGold=new THREE.Color(0xc9a25b);
-for(let lon=-18;lon<=51.5;lon+=.85){
-  for(let lat=-35.5;lat<=37.5;lat+=.85){
-    const jx=lon+(Math.random()-.5)*.8, jy=lat+(Math.random()-.5)*.8;
-    if(!inPoly(jx,jy,COAST)) continue;
-    const p=ll(jx,jy); p.z=(Math.random()-.5)*.5;
-    pts.push(p.x,p.y,p.z);
-    const r=Math.random();
-    const c = r<.025 ? cGold : (r<.4 ? cSoft : cBlue);
-    cols.push(c.r,c.g,c.b);
-    phases.push(Math.random()*Math.PI*2);
-    sizes.push(r<.025 ? 1.2+Math.random()*.6 : .55+Math.random()*.8);
+  function draw(t) {
+    if (!ctx) return;
+    const w = ambient.clientWidth;
+    const h = ambient.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    const g = ctx.createRadialGradient(w * 0.5, h * 0.42, 0, w * 0.5, h * 0.5, w * 0.55);
+    g.addColorStop(0, "rgba(224,74,26,0.10)");
+    g.addColorStop(1, "rgba(224,74,26,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
+    sparks.forEach((s) => {
+      if (!reduce) {
+        s.x += s.vx;
+        s.y += s.vy;
+        if (s.x < 0 || s.x > 1) s.vx *= -1;
+        if (s.y < 0 || s.y > 1) s.vy *= -1;
+      }
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(224,74,26," + (0.18 + Math.sin(t * 0.001 + s.x * 8) * 0.08) + ")";
+      ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
   }
-}
-const africaGeo = new THREE.BufferGeometry();
-africaGeo.setAttribute('position', new THREE.Float32BufferAttribute(pts,3));
-africaGeo.setAttribute('aColor',   new THREE.Float32BufferAttribute(cols,3));
-africaGeo.setAttribute('aPhase',   new THREE.Float32BufferAttribute(phases,1));
-africaGeo.setAttribute('aSize',    new THREE.Float32BufferAttribute(sizes,1));
-const twinkleMat = (opacity=1)=> new THREE.ShaderMaterial({
-  transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
-  uniforms:{ uTime:{value:0}, uPix:{value:renderer.getPixelRatio()}, uOp:{value:opacity} },
-  vertexShader:`
-    attribute vec3 aColor; attribute float aPhase; attribute float aSize;
-    uniform float uTime,uPix; varying vec3 vC; varying float vA;
-    void main(){
-      vC=aColor;
-      vec4 mv=modelViewMatrix*vec4(position,1.);
-      gl_PointSize = aSize*uPix*(140./-mv.z);
-      vA = .45 + .55*sin(uTime*(.5+fract(aPhase)*.8)+aPhase*6.2831);
-      gl_Position = projectionMatrix*mv;
-    }`,
-  fragmentShader:`
-    varying vec3 vC; varying float vA; uniform float uOp;
-    void main(){
-      float d=length(gl_PointCoord-.5);
-      float a=smoothstep(.5,.05,d)*vA*uOp;
-      if(a<.003) discard;
-      gl_FragColor=vec4(vC,a);
-    }`
-});
-const africaMat = twinkleMat(1);
-const africa = new THREE.Points(africaGeo, africaMat);
-const worldRoot = new THREE.Group();
-worldRoot.add(africa);
-worldRoot.rotation.x = -.12;
-scene.add(worldRoot);
 
-/* coast outline — faint hairline */
-const coastPts = COAST.map(([lo,la])=>ll(lo,la));
-const coastGeo = new THREE.BufferGeometry().setFromPoints(coastPts);
-const coast = new THREE.Line(coastGeo, new THREE.LineBasicMaterial({color:0x2a3f9e, transparent:true, opacity:.35}));
-worldRoot.add(coast);
-
-/* ---------- cities + arcs ---------- */
-const CITIES = {
-  lagos:[3.4,6.5], accra:[-.2,5.6], dakar:[-17.4,14.7], cairo:[31.2,30],
-  addis:[38.7,9], nairobi:[36.8,-1.3], kigali:[30.1,-1.9], capetown:[18.4,-33.9]
-};
-function glowTex(){
-  const c=document.createElement('canvas'); c.width=c.height=64;
-  const g=c.getContext('2d'), gr=g.createRadialGradient(32,32,0,32,32,32);
-  gr.addColorStop(0,'rgba(255,252,244,1)'); gr.addColorStop(.25,'rgba(226,208,168,.7)');
-  gr.addColorStop(.6,'rgba(201,162,91,.16)'); gr.addColorStop(1,'rgba(201,162,91,0)');
-  g.fillStyle=gr; g.fillRect(0,0,64,64);
-  return new THREE.CanvasTexture(c);
-}
-const gTex = glowTex();
-const cityGroup = new THREE.Group(); worldRoot.add(cityGroup);
-const cityPos = {};
-for(const k in CITIES){
-  const p = ll(...CITIES[k]); p.z = .3; cityPos[k]=p;
-  const s = new THREE.Sprite(new THREE.SpriteMaterial({map:gTex, color:0xd8c9a3, transparent:true,
-    depthWrite:false, blending:THREE.AdditiveBlending, opacity:.72}));
-  s.position.copy(p); s.scale.setScalar(.7);
-  s.userData.phase = Math.random()*Math.PI*2;
-  cityGroup.add(s);
-}
-/* arcs between hubs */
-const LINKS=[['lagos','nairobi'],['lagos','capetown'],['dakar','lagos'],['accra','kigali'],
-  ['nairobi','cairo'],['kigali','capetown'],['addis','lagos'],['cairo','accra']];
-const arcGroup=new THREE.Group(); worldRoot.add(arcGroup);
-const pulses=[];
-for(const [a,b] of LINKS){
-  const A=cityPos[a], B=cityPos[b];
-  const mid=A.clone().lerp(B,.5); mid.z += A.distanceTo(B)*.35 + 1.2;
-  const curve=new THREE.QuadraticBezierCurve3(A,mid,B);
-  const geo=new THREE.BufferGeometry().setFromPoints(curve.getPoints(60));
-  arcGroup.add(new THREE.Line(geo,new THREE.LineBasicMaterial({color:0x2545ff,transparent:true,opacity:.28})));
-  const dot=new THREE.Sprite(new THREE.SpriteMaterial({map:gTex,color:0xc3b593,transparent:true,
-    depthWrite:false,blending:THREE.AdditiveBlending}));
-  dot.scale.setScalar(.42); arcGroup.add(dot);
-  pulses.push({curve,dot,t:Math.random(),speed:.05+Math.random()*.06});
-}
-
-/* ---------- starfield ---------- */
-const starGeo=new THREE.BufferGeometry();
-const sp=[],sc=[],sph=[],ss=[];
-for(let i=0;i<900;i++){
-  const v=new THREE.Vector3().randomDirection().multiplyScalar(90+Math.random()*160);
-  sp.push(v.x,v.y,v.z);
-  const c=cSoft; sc.push(c.r*.6,c.g*.6,c.b*.6);
-  sph.push(Math.random()*Math.PI*2); ss.push(.4+Math.random()*.9);
-}
-starGeo.setAttribute('position',new THREE.Float32BufferAttribute(sp,3));
-starGeo.setAttribute('aColor',new THREE.Float32BufferAttribute(sc,3));
-starGeo.setAttribute('aPhase',new THREE.Float32BufferAttribute(sph,1));
-starGeo.setAttribute('aSize',new THREE.Float32BufferAttribute(ss,1));
-const starMat = twinkleMat(.8);
-scene.add(new THREE.Points(starGeo,starMat));
-
-/* ---------- pointer trail (distance emitter, camera-anchored) ---------- */
-const TRAIL_N = coarse ? 0 : 170, STEP=.05, D=6;
-let trailGeo, trailMat, trail=null, motes=[];
-const E={x:0,y:0,lx:0,ly:0,acc:0,i:0,idle:0};
-let px=0, py=0, hasPointer=false;
-if(TRAIL_N && !reduceMotion){
-  trailGeo=new THREE.BufferGeometry();
-  trailGeo.setAttribute('position',new THREE.Float32BufferAttribute(new Float32Array(TRAIL_N*3),3));
-  trailGeo.setAttribute('aColor',new THREE.Float32BufferAttribute(new Float32Array(TRAIL_N*3),3));
-  trailGeo.setAttribute('aPhase',new THREE.Float32BufferAttribute(new Float32Array(TRAIL_N),1));
-  trailGeo.setAttribute('aSize',new THREE.Float32BufferAttribute(new Float32Array(TRAIL_N),1));
-  for(let i=0;i<TRAIL_N;i++) motes.push({life:0,max:1,x:0,y:0,z:0,vx:0,vy:0,phi:Math.random()*6.28});
-  trailMat=twinkleMat(1); trailMat.depthTest=false;
-  trail=new THREE.Points(trailGeo,trailMat);
-  trail.frustumCulled=false; trail.renderOrder=10;
-  camera.add(trail);
-  addEventListener('pointermove',e=>{
-    px=(e.clientX/W)*2-1; py=-((e.clientY/H)*2-1); hasPointer=true;
+  document.querySelectorAll("a.product").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
+      card.style.setProperty("--my", ((e.clientY - r.top) / r.height) * 100 + "%");
+    });
   });
-}
-function spawn(x,y){
-  const i=E.i; E.i=(i+1)%TRAIL_N;                 // take the slot, then advance
-  const m=motes[i];
-  m.life=.0001; m.max=1.4+Math.random()*1.2;
-  m.x=x+(Math.random()-.5)*.14; m.y=y+(Math.random()-.5)*.14; m.z=-D+(Math.random()-.5)*.5;
-  m.vx=(Math.random()-.5)*.16; m.vy=(Math.random()-.5)*.16;
-  const col = Math.random()<.15?cGold:cSoft;
-  trailGeo.attributes.aColor.setXYZ(i,col.r,col.g,col.b);
-  trailGeo.attributes.aSize.setX(i,.5+Math.random()*.8);
-  trailGeo.attributes.aPhase.setX(i,Math.random()*6.28);
-}
-function updateTrail(dt,t){
-  if(!trail||!hasPointer) return;
-  const hh=Math.tan(camera.fov*Math.PI/360)*D;
-  const tx=px*hh*camera.aspect, ty=py*hh;
-  E.lx=E.x; E.ly=E.y;
-  const k=1-Math.exp(-16*dt);
-  E.x+=(tx-E.x)*k; E.y+=(ty-E.y)*k;               // lag the emitter
-  const dx=E.x-E.lx, dy=E.y-E.ly;
-  const moved=Math.hypot(dx,dy);
-  E.acc+=moved; let guard=0;
-  while(E.acc>=STEP&&guard<14){
-    E.acc-=STEP; guard++;
-    const f=moved>1e-6?Math.min(1,guard*STEP/moved):0;
-    spawn(E.lx+dx*f,E.ly+dy*f);                    // owed position on the segment
+
+  window.addEventListener("resize", fit);
+  fit();
+  const start = performance.now();
+  function frame(now) {
+    draw(now - start);
+    if (!reduce) requestAnimationFrame(frame);
   }
-  E.idle+=dt;
-  if(moved<.002&&E.idle>.42){E.idle=0;spawn(E.x,E.y);}   // the breath
-  const pos=trailGeo.attributes.position;
-  for(let i=0;i<TRAIL_N;i++){
-    const m=motes[i];
-    if(m.life<=0){pos.setXYZ(i,0,0,999);continue;}
-    m.life+=dt;
-    const u=m.life/m.max;
-    if(u>=1){m.life=0;pos.setXYZ(i,0,0,999);continue;}
-    const damp=1-.5*dt;
-    m.vx*=damp; m.vy*=damp;
-    m.x+=m.vx*dt+Math.sin(t*1.3+m.phi)*.05*dt;
-    m.y+=m.vy*dt+.03*dt+Math.cos(t*1.1+m.phi*1.7)*.04*dt;
-    pos.setXYZ(i,m.x,m.y,m.z);
-    trailGeo.attributes.aSize.setX(i,(.5+.8*u));
-  }
-  pos.needsUpdate=true;
-  trailGeo.attributes.aSize.needsUpdate=true;
-}
-
-/* ---------- chapter ledger + conductor ---------- */
-const PAGES=[
-  { cam:{pos:[-3.5, 1.0, 37], look:[7.5, 0.5, 0], fov:40},
-    world:{fog:.010, arc:1,  rotY:.00} },
-  { cam:{pos:[ 2.0,-7.5, 27], look:[4.0,-1.5, 0], fov:42},
-    world:{fog:.013, arc:1.4,rotY:-.12} },
-  { cam:{pos:[-2.0, 0.5, 33], look:[6.5, 0.2, 0], fov:38},
-    world:{fog:.018, arc:.6, rotY:.10} },
-];
-/* mobile pull-back override */
-function camFor(p){
-  const c=PAGES[p].cam, mob=W/H<.8;
-  return { pos:c.pos.map((v,i)=> mob&&i===2 ? v*1.55 : v), look:c.look, fov: mob? c.fov+8 : c.fov };
-}
-const rig={target:0, smooth:0};
-const ease=t=>t*t*(3-2*t);
-const lerp=(a,b,t)=>a+(b-a)*t;
-function applyRig(){
-  const p=THREE.MathUtils.clamp(rig.smooth,0,PAGES.length-1);
-  const i=Math.floor(p), j=Math.min(i+1,PAGES.length-1), t=ease(p-i);
-  const A=camFor(i), B=camFor(j);
-  camera.position.set(lerp(A.pos[0],B.pos[0],t), lerp(A.pos[1],B.pos[1],t), lerp(A.pos[2],B.pos[2],t));
-  camera.fov=lerp(A.fov,B.fov,t); camera.updateProjectionMatrix();
-  const lx=lerp(A.look[0],B.look[0],t), ly=lerp(A.look[1],B.look[1],t), lz=lerp(A.look[2],B.look[2],t);
-  camera.lookAt(lx,ly,lz);
-  const Wa=PAGES[i].world, Wb=PAGES[j].world;
-  scene.fog.density=lerp(Wa.fog,Wb.fog,t);
-  worldRoot.rotation.y=lerp(Wa.rotY,Wb.rotY,t);
-  arcGroup.visible=true;
-  const arcI=lerp(Wa.arc,Wb.arc,t);
-  arcGroup.children.forEach(o=>{ if(o.isLine) o.material.opacity=.28*arcI; });
-  /* parallax, clamped, blended out near transitions */
-  if(hasPointer&&!reduceMotion){
-    const settle=1-Math.min(1,Math.abs(rig.smooth-rig.target)*4);
-    camera.position.x+=px*.35*settle; camera.position.y+=py*.25*settle;
-    camera.lookAt(lx,ly,lz);
-  }
-}
-
-/* ---------- DOM pages follow the same conductor ---------- */
-const pageEls=[...document.querySelectorAll('.page')];
-const dots=[...document.querySelectorAll('nav.dots button')];
-function applyDom(){
-  pageEls.forEach((el,i)=>{
-    const d=rig.smooth-i, a=Math.max(0,1-Math.min(1,Math.abs(d)*1.6));
-    el.style.opacity=ease(a);
-    el.style.transform=`translateY(${d*-46}px)`;
-    el.style.pointerEvents = a>.55?'auto':'none';
-  });
-  const cur=Math.round(rig.smooth);
-  dots.forEach((b,i)=>b.classList.toggle('on',i===cur));
-}
-function go(n){
-  rig.target=THREE.MathUtils.clamp(n,0,PAGES.length-1);
-  document.getElementById('hint').classList.add('gone');
-}
-document.querySelectorAll('[data-go]').forEach(el=>{
-  el.addEventListener('click',e=>{e.preventDefault();go(+el.dataset.go);});
-});
-
-/* wheel → one gesture, one page */
-let lock=0;
-addEventListener('wheel',e=>{
-  const now=performance.now();
-  if(now<lock||Math.abs(e.deltaY)<18) return;
-  lock=now+850;
-  go(rig.target+Math.sign(e.deltaY));
-},{passive:true});
-/* keys */
-addEventListener('keydown',e=>{
-  if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(rig.target+1);}
-  if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(rig.target-1);}
-  if(e.key==='Home')go(0); if(e.key==='End')go(2);
-});
-/* touch swipe */
-let ty0=null;
-addEventListener('touchstart',e=>{ty0=e.touches[0].clientY;},{passive:true});
-addEventListener('touchend',e=>{
-  if(ty0===null)return;
-  const dy=ty0-e.changedTouches[0].clientY; ty0=null;
-  if(Math.abs(dy)>52) go(rig.target+Math.sign(dy));
-},{passive:true});
-
-/* ---------- waitlist (mailto v0 — swap action for Formspree/Tally later) ---------- */
-document.querySelectorAll('form.field').forEach(f=>{
-  f.addEventListener('submit',e=>{
-    e.preventDefault();
-    const email=f.querySelector('input').value.trim();
-    const kind=f.dataset.kind;
-    const subj=encodeURIComponent(`Afrotensor ${kind} Waitlist`);
-    const body=encodeURIComponent(
-      kind==='Investor'
-      ? `Reserve my founding backer seat (200 TAO).\n\nContact: ${email}\n`
-      : `We want to build in Cohort One.\n\nContact: ${email}\nWhat we're building: `);
-    location.href=`mailto:invest@bigidea.africa?subject=${subj}&body=${body}`;
-    const b=f.querySelector('button'); b.textContent='Check your mail ✓';
-    setTimeout(()=>b.textContent='Join waitlist',2600);
-  });
-});
-
-/* ---------- loop ---------- */
-let hidden=false;
-document.addEventListener('visibilitychange',()=>{hidden=document.hidden; if(!hidden)clock.getDelta();});
-function frame(){
   requestAnimationFrame(frame);
-  if(hidden) return;
-  const dt=Math.min(clock.getDelta(),1/30);
-  const t=clock.elapsedTime;
-  if(reduceMotion){ rig.smooth=rig.target; }
-  else{
-    const k=1-Math.exp(-4.6*dt);
-    rig.smooth+=(rig.target-rig.smooth)*k;
-    if(Math.abs(rig.target-rig.smooth)<.0006) rig.smooth=rig.target;
-  }
-  africaMat.uniforms.uTime.value=t;
-  starMat.uniforms.uTime.value=t;
-  if(trailMat) trailMat.uniforms.uTime.value=t;
-  cityGroup.children.forEach(s=>{
-    s.scale.setScalar(.62+Math.sin(t*1.6+s.userData.phase)*.14);
-  });
-  pulses.forEach(p=>{
-    p.t=(p.t+p.speed*dt* (reduceMotion?0:1))%1;
-    p.curve.getPoint(p.t,p.dot.position);
-    p.dot.material.opacity=Math.sin(p.t*Math.PI);
-  });
-  if(!reduceMotion) worldRoot.rotation.y+=Math.sin(t*.1)*.00004;
-  updateTrail(dt,t);
-  applyRig(); applyDom();
-  renderer.render(scene,camera);
-}
-applyRig(); applyDom(); frame();
-} /* end webgl guard */
-else{
-  /* flat fallback: stacked, scrollable, fully readable */
-  document.querySelectorAll('.page').forEach(p=>{p.style.opacity=1;p.style.pointerEvents='auto';});
-}
+})();
 </script>
 </body>
 </html>
